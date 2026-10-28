@@ -1,0 +1,162 @@
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #16202e;
+  --muted: #5d6b7e;
+  --border: #dde2ea;
+  --accent: #0f766e;
+  --accent-text: #ffffff;
+  --assistant: #eef1f6;
+  --quote: #f1f5f4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --panel: #111a2c;
+    --text: #e8edf6;
+    --muted: #93a1b6;
+    --border: #22304a;
+    --accent: #2dd4bf;
+    --accent-text: #06231f;
+    --assistant: #1a2640;
+    --quote: #15203a;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+button { font: inherit; cursor: pointer; }
+.muted { color: var(--muted); }
+
+.shell {
+  max-width: 760px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+}
+
+header h1 { margin: 8px 0 4px; font-size: 1.5rem; }
+header p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+.drop {
+  background: var(--panel);
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: border-color 0.15s;
+}
+.drop.over { border-color: var(--accent); }
+.empty-drop p { margin: 0 0 10px; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.docbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.docbar strong { overflow-wrap: anywhere; }
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 16px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+button.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+button.link { background: none; color: var(--accent); padding: 4px 8px; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.chat {
+  flex: 1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  min-height: 300px;
+}
+
+.hint p { margin: 0 0 10px; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 400;
+}
+.chip:hover { border-color: var(--accent); }
+
+.msg { display: flex; flex-direction: column; max-width: 90%; }
+.msg.user { align-self: flex-end; align-items: flex-end; }
+.msg.assistant { align-self: flex-start; }
+
+.bubble {
+  padding: 10px 14px;
+  border-radius: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.user .bubble { background: var(--accent); color: var(--accent-text); border-bottom-right-radius: 4px; }
+.assistant .bubble { background: var(--assistant); border-bottom-left-radius: 4px; }
+
+.cite {
+  display: inline-block;
+  min-width: 1.3em;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.3em;
+  padding: 0 4px;
+  margin: 0 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-text);
+  vertical-align: baseline;
+}
+
+.sources { margin-top: 6px; font-size: 0.85rem; color: var(--muted); width: 100%; }
+.sources summary { cursor: pointer; }
+.sources blockquote {
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  background: var(--quote);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+  color: var(--text);
+}
+.sources blockquote p { margin: 6px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.error {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fdecec;
+  color: #8a1c1c;
+  font-size: 0.9rem;
+}
+
+.composer { display: flex; gap: 8px; }
+.composer input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+}
+.composer input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.composer input:disabled { opacity: 0.6; }
