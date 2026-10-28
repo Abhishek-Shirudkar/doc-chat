@@ -1,5 +1,9 @@
 # DocChat: ask questions about your documents
 
+**Live demo:** https://doc-chat-rosy.vercel.app (the first question can take up to a minute while the free server wakes up)
+
+![DocChat answering a question and showing the passages it used](docs/screenshot.png)
+
 Upload a PDF, text or Markdown file and chat with it. Answers stream in live and cite the exact passages (and PDF page numbers) they came from, so you can check them.
 
 **Stack:** React 18 + Vite on the front end, plain Node.js (no framework) on the back end. The answers come from an LLM API: a free Groq key (Llama models) or an Anthropic Claude key, your choice.
